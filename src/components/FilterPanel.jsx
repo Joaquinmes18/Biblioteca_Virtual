@@ -7,27 +7,27 @@ const FilterPanel = ({ filters, setFilters }) => {
   };
 
   return (
-    <div style={{ display: 'flex', gap: '15px', padding: '15px', background: '#ecf0f1', borderRadius: '8px', marginBottom: '25px', flexWrap: 'wrap' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-        <label><strong>Año Min:</strong></label>
-        <input type="number" name="minYear" value={filters.minYear} onChange={handleChange} placeholder="Ej. 1990" style={{ width: '80px', padding: '5px' }} />
+    <section className="filter-panel">
+      <div className="filter-panel__item">
+        <label className="filter-panel__label" htmlFor="minYear">Año Min</label>
+        <input id="minYear" className="filter-panel__input" type="number" name="minYear" value={filters.minYear} onChange={handleChange} placeholder="Ej. 1990" />
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-        <label><strong>Año Max:</strong></label>
-        <input type="number" name="maxYear" value={filters.maxYear} onChange={handleChange} placeholder="Ej. 2024" style={{ width: '80px', padding: '5px' }} />
+      <div className="filter-panel__item">
+        <label className="filter-panel__label" htmlFor="maxYear">Año Max</label>
+        <input id="maxYear" className="filter-panel__input" type="number" name="maxYear" value={filters.maxYear} onChange={handleChange} placeholder="Ej. 2024" />
       </div>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-        <label><strong>Ordenar por:</strong></label>
-        <select name="sortBy" value={filters.sortBy} onChange={handleChange} style={{ padding: '5px' }}>
+      <div className="filter-panel__item">
+        <label className="filter-panel__label" htmlFor="sortBy">Ordenar por</label>
+        <select id="sortBy" className="filter-panel__select" name="sortBy" value={filters.sortBy} onChange={handleChange}>
           <option value="relevance">Relevancia</option>
           <option value="yearAsc">Año (Antiguos primero)</option>
           <option value="yearDesc">Año (Recientes primero)</option>
           <option value="editions">Cantidad de ediciones</option>
         </select>
       </div>
-    </div>
+    </section>
   );
 };
 

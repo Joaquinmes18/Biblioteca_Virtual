@@ -24,34 +24,34 @@ const BookCard = ({ book }) => {
   };
 
   return (
-    <div className="book-card" style={{ border: '1px solid #ddd', borderRadius: '8px', padding: '15px', display: 'flex', flexDirection: 'column', background: 'white' }}>
+    <article className="book-card">
       <img 
+        className="book-card__cover"
         src={openLibraryService.getCoverUrl(book.cover_i)} 
         alt={`Portada de ${book.title}`} 
-        style={{ height: '250px', objectFit: 'contain', marginBottom: '15px' }}
       />
-      <div style={{ flex: 1 }}>
-        <h3 style={{ margin: '0 0 10px 0', fontSize: '1.2rem', color: '#2c3e50' }}>{book.title}</h3>
-        <p style={{ margin: '5px 0', color: '#7f8c8d' }}><strong>Autor:</strong> {book.author_name ? book.author_name.join(', ') : 'Desconocido'}</p>
-        <p style={{ margin: '5px 0', color: '#7f8c8d' }}><strong>Año:</strong> {book.first_publish_year || 'N/D'}</p>
-        <p style={{ margin: '5px 0', color: '#7f8c8d' }}><strong>Ediciones:</strong> {book.edition_count || 1}</p>
+      <div className="book-card__body">
+        <h3 className="book-card__title">{book.title}</h3>
+        <p className="book-card__meta"><strong>Autor:</strong> {book.author_name ? book.author_name.join(', ') : 'Desconocido'}</p>
+        <p className="book-card__meta"><strong>Año:</strong> {book.first_publish_year || 'N/D'}</p>
+        <p className="book-card__meta"><strong>Ediciones:</strong> {book.edition_count || 1}</p>
       </div>
       
-      <div style={{ display: 'flex', gap: '10px', marginTop: '15px' }}>
+      <div className="book-card__actions">
         <Link 
+          className="ui-link-button ui-link-button--primary"
           to={`/libro/${workId}`} 
-          style={{ flex: 1, textAlign: 'center', background: '#3498db', color: 'white', padding: '10px', textDecoration: 'none', borderRadius: '5px', fontWeight: 'bold' }}
         >
           Ver detalle
         </Link>
         <button 
+          className={`ui-button ${isFav ? 'ui-button--danger' : 'ui-button--secondary'}`}
           onClick={toggleFavorite}
-          style={{ background: isFav ? '#e74c3c' : '#ecf0f1', color: isFav ? 'white' : '#333', border: 'none', padding: '10px', borderRadius: '5px', cursor: 'pointer', fontWeight: 'bold' }}
         >
           {isFav ? '❤️ Quitar' : '🤍 Favorito'}
         </button>
       </div>
-    </div>
+    </article>
   );
 };
 

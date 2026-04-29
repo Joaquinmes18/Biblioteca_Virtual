@@ -33,45 +33,47 @@ const BookDetail = () => {
     setIsFav(!isFav);
   };
 
-  if (!book) return <p style={{ padding: '2rem' }}>Cargando...</p>;
+  if (!book) return <div className="state-message state-message--loading">Cargando...</div>;
+
+  const description = book.description
+    ? typeof book.description === 'string'
+      ? book.description
+      : book.description.value
+    : 'No disponible';
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <button onClick={() => navigate(-1)}>⬅ Volver</button>
+    <div className="app-page detail-page">
+      <button className="ui-button ui-button--ghost" onClick={() => navigate(-1)}>← Volver</button>
 
-      <h1>{book.title}</h1>
+      <article className="detail-card">
+        <img
+          className="detail-card__cover"
+          src={openLibraryService.getCoverUrl(book.covers?.[0], 'L')}
+          alt={book.title}
+        />
 
-      <img
-        src={openLibraryService.getCoverUrl(book.covers?.[0], 'L')}
-        alt={book.title}
-        style={{ height: '300px', margin: '20px 0' }}
-      />
+        <div className="detail-card__body">
+          <div className="detail-card__section">
+            <h1 className="detail-card__title">{book.title}</h1>
+            <p className="detail-description">{description}</p>
+          </div>
 
-      <p>
-        <strong>Descripción:</strong>{' '}
-        {book.description
-          ? typeof book.description === 'string'
-            ? book.description
-            : book.description.value
-          : 'No disponible'}
-      </p>
+          <div className="detail-card__info">
+            <p className="detail-meta"><span className="detail-card__label">Fecha publicación:</span> {book.first_publish_date || 'N/D'}</p>
+            <p className="detail-meta"><span className="detail-card__label">Temas:</span> {book.subjects ? book.subjects.slice(0, 5).join(', ') : 'N/D'}</p>
+          </div>
 
-      <p><strong>Fecha publicación:</strong> {book.first_publish_date || 'N/D'}</p>
+          <div className="detail-card__footer">
+            <button className={`ui-button ${isFav ? 'ui-button--danger' : 'ui-button--secondary'}`} onClick={toggleFavorite}>
+              {isFav ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+            </button>
 
-      <p>
-        <strong>Temas:</strong>{' '}
-        {book.subjects ? book.subjects.slice(0, 5).join(', ') : 'N/D'}
-      </p>
-
-      <button onClick={toggleFavorite} style={{ marginTop: '15px' }}>
-        {isFav ? ' Quitar de favoritos' : ' Agregar a favoritos'}
-      </button>
-
-      <br /><br />
-
-      <a href={`https://openlibrary.org${book.key}`} target="_blank">
-        Ver en OpenLibrary
-      </a>
+            <a className="ui-link-button ui-link-button--primary" href={`https://openlibrary.org${book.key}`} target="_blank" rel="noreferrer">
+              Ver en OpenLibrary
+            </a>
+          </div>
+        </div>
+      </article>
     </div>
   );
 };

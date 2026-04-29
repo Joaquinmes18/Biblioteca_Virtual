@@ -12,11 +12,11 @@ const SearchBar = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+    <form className="search-toolbar" onSubmit={handleSubmit}>
       <select 
+        className="search-toolbar__select"
         value={type} 
         onChange={(e) => setType(e.target.value)}
-        style={{ padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
       >
         <option value="q">General</option>
         <option value="title">Título</option>
@@ -25,14 +25,14 @@ const SearchBar = ({ onSearch }) => {
       </select>
       
       <input 
+        className="search-toolbar__input"
         type="text" 
         placeholder="Buscar libros..." 
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        style={{ flex: 1, padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}
       />
       
-      <button type="submit" style={{ padding: '10px 20px', background: '#2c3e50', color: 'white', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>
+      <button className="search-toolbar__button" type="submit">
         🔍 Buscar
       </button>
     </form>

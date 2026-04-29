@@ -60,20 +60,23 @@ const Search = () => {
   const processedBooks = getProcessedBooks();
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1 style={{ color: '#2c3e50', marginBottom: '20px' }}>Buscador Avanzado</h1>
+    <div className="app-page">
+      <section className="page-hero">
+        <h1 className="page-title">Buscador Avanzado</h1>
+        <p className="page-subtitle">Filtra por año, relevancia y cantidad de ediciones sin perder el mismo lenguaje visual del sitio.</p>
+      </section>
       
       <SearchBar onSearch={handleSearch} />
       <FilterPanel filters={filters} setFilters={setFilters} />
 
-      {loading && <div style={{ textAlign: 'center', margin: '50px 0' }}>Buscando en la biblioteca... ⏳</div>}
-      {error && <div style={{ color: 'red', textAlign: 'center' }}>{error}</div>}
+      {loading && <div className="state-message state-message--loading">Buscando en la biblioteca... ⏳</div>}
+      {error && <div className="state-message state-message--error">{error}</div>}
 
       {!loading && !error && hasSearched && processedBooks.length === 0 && (
-        <div style={{ textAlign: 'center', color: '#7f8c8d' }}>No se encontraron libros con estos criterios.</div>
+        <div className="empty-state">No se encontraron libros con estos criterios.</div>
       )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '25px' }}>
+      <div className="book-grid">
         {processedBooks.map((book, index) => (
           <BookCard key={`${book.key}-${index}`} book={book} />
         ))}
