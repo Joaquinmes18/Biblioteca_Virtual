@@ -58,7 +58,7 @@ const About = () => {
           rel="noopener noreferrer"
           className="about-link"
         >
-          Open Library
+          Abir libreria
         </a>
       </div>
     </div>
