@@ -27,24 +27,21 @@ const Home = () => {
   }, []);
 
   if (loading) {
-    return <div style={{ textAlign: 'center', padding: '50px', fontSize: '1.2rem' }}>Cargando libros recomendados... ⏳</div>;
+    return <div className="state-message state-message--loading">Cargando libros recomendados... ⏳</div>;
   }
 
   if (error) {
-    return <div style={{ color: 'red', textAlign: 'center', padding: '50px' }}>{error}</div>;
+    return <div className="state-message state-message--error">{error}</div>;
   }
 
   return (
-    <div style={{ padding: '2rem', maxWidth: '1200px', margin: '0 auto' }}>
-      <h1 style={{ color: '#2c3e50', marginBottom: '10px' }}>Descubre nuevas lecturas</h1>
-      <p style={{ color: '#7f8c8d', marginBottom: '30px' }}>Recomendaciones destacadas sobre Ingeniería de Software</p>
-      
-      {/* Grid responsivo para las tarjetas */}
-      <div style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', 
-        gap: '25px' 
-      }}>
+    <div className="app-page">
+      <section className="page-hero">
+        <h1 className="page-title">Descubre nuevas lecturas</h1>
+        <p className="page-subtitle">Recomendaciones destacadas sobre Ingeniería de Software</p>
+      </section>
+
+      <div className="book-grid">
         {books.map((book, index) => (
           <BookCard key={`${book.key}-${index}`} book={book} />
         ))}
