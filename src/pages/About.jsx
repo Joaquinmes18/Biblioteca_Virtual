@@ -52,7 +52,14 @@ const About = () => {
           </p>
         </div>
 
-        
+        <a
+          href="https://openlibrary.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="about-link"
+        >
+          Open Library
+        </a>
       </div>
     </div>
   );
