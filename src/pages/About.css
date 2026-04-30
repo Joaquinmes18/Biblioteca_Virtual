@@ -16,14 +16,13 @@
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
-/* HEADER */
 .about-header {
   text-align: center;
   margin-bottom: 30px;
 }
 
 .about-header h1 {
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   color: #2c3e50;
   margin-bottom: 10px;
 }
@@ -31,16 +30,15 @@
 .about-header p {
   color: #666;
   font-size: 1rem;
+  line-height: 1.6;
 }
 
-/* GRID */
 .about-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
-/* BOX */
 .about-box {
   background: #f8fafc;
   padding: 20px;
@@ -70,7 +68,6 @@
   padding-left: 18px;
 }
 
-/* FOOTER */
 .about-footer {
   text-align: center;
   margin-top: 30px;

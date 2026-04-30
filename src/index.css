@@ -2,18 +2,37 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f8f9fa;
-  color: #333;
+  min-width: 320px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', sans-serif;
+  background:
+    radial-gradient(circle at top left, rgba(207, 181, 59, 0.18), transparent 28%),
+    radial-gradient(circle at top right, rgba(21, 37, 64, 0.12), transparent 30%),
+    linear-gradient(180deg, #f5f1e8 0%, #f8f4eb 38%, #f2efe8 100%);
+  color: #1f2a37;
 }
 
-.book-card {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+a {
+  color: inherit;
 }
 
-.book-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+#root {
+  min-height: 100vh;
 }

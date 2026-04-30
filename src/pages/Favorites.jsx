@@ -16,35 +16,42 @@ const Favorites = () => {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Libros Favoritos Seleccionados</h1>
+<div className="app-page">
+  <section className="page-hero">
+    <h1 className="page-title">Libros Favoritos Seleccionados</h1>
+    <p className="page-subtitle">
+      Aquí puedes ver y gestionar los libros que has guardado como favoritos.
+    </p>
+  </section>
 
-      {favorites.length === 0 && <p>No tienes favoritos</p>}
+      {favorites.length === 0 && <div className="empty-state">No tienes favoritos</div>}
 
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, 200px)', gap: '20px' }}>
+      <div className="favorites-grid">
         {favorites.map(book => {
           const workId = book.key.replace('/works/', '');
 
           return (
-            <div key={book.key} style={{ border: '1px solid #ddd', padding: '10px', borderRadius: '8px' }}>
+            <article key={book.key} className="favorite-card">
               <img
+                className="favorite-card__cover"
                 src={openLibraryService.getCoverUrl(book.cover_i)}
                 alt={book.title}
-                style={{ height: '200px', objectFit: 'contain' }}
               />
 
-              <h3>{book.title}</h3>
+              <div className="favorite-card__body">
+                <h3 className="favorite-card__title">{book.title}</h3>
+              </div>
 
-              <Link to={`/libro/${workId}`}>
-                Ver detalle
-              </Link>
+              <div className="favorite-card__actions">
+                <Link className="ui-link-button ui-link-button--primary" to={`/libro/${workId}`}>
+                  Ver detalle
+                </Link>
 
-              <br /><br />
-
-              <button onClick={() => removeFav(book.key)}>
-                Eliminar
-              </button>
-            </div>
+                <button className="favorite-card__button ui-button ui-button--danger" onClick={() => removeFav(book.key)}>
+                  Eliminar
+                </button>
+              </div>
+            </article>
           );
         })}
       </div>
