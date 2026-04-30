@@ -17,7 +17,7 @@ const Favorites = () => {
 
   return (
     <div style={{ padding: '2rem' }}>
-      <h1>Libros Favoritos</h1>
+      <h1>Libros Favoritos Seleccionados</h1>
 
       {favorites.length === 0 && <p>No tienes favoritos</p>}
 
