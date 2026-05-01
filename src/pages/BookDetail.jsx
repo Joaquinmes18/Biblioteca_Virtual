@@ -1,28 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/router';
 import { openLibraryService } from '../services/openLibraryService';
 import { storage } from '../utils/storage';
 
-const BookDetail = () => {
-  const { workId } = useParams();
-  const navigate = useNavigate();
-
-  const [book, setBook] = useState(null);
+const BookDetail = ({ book: initialBook }) => {
+  const router = useRouter();
+  const [book, setBook] = useState(initialBook);
   const [isFav, setIsFav] = useState(false);
 
   useEffect(() => {
-    const loadBook = async () => {
-      try {
-        const data = await openLibraryService.getBookDetails(workId);
-        setBook(data);
-        setIsFav(storage.isFavorite(data.key));
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    loadBook();
-  }, [workId]);
+    if (book) {
+      setIsFav(storage.isFavorite(book.key));
+    }
+  }, [book]);
 
   const toggleFavorite = () => {
     if (isFav) {
@@ -43,7 +33,7 @@ const BookDetail = () => {
 
   return (
     <div className="app-page detail-page">
-      <button className="ui-button ui-button--ghost" onClick={() => navigate(-1)}>← Volver</button>
+      <button className="ui-button ui-button--ghost" onClick={() => router.back()}>← Volver</button>
 
       <article className="detail-card">
         <img

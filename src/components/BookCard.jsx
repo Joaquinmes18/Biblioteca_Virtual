@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { openLibraryService } from '../services/openLibraryService';
 import { storage } from '../utils/storage';
 
@@ -40,12 +40,12 @@ const BookCard = ({ book }) => {
       <div className="book-card__actions">
         <Link 
           className="ui-link-button ui-link-button--primary"
-          to={`/libro/${workId}`} 
+          href={`/libro/${workId}`} 
         >
           Ver detalle
         </Link>
         <button 
-          className={`ui-button ${isFav ? 'ui-button--danger' : 'ui-button--secondary'}`}
+          className="ui-button ui-button--secondary"
           onClick={toggleFavorite}
         >
           {isFav ? '❤️ Quitar' : '🤍 Favorito'}
