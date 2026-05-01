@@ -548,3 +548,77 @@ main {
 .about-footer a:hover {
   background: #2980b9;
 }
+/* ===== RESPONSIVE (AGREGADO) ===== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  .detail-card {
+    grid-template-columns: 1fr;
+  }
+
+  .book-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+/* Tablets pequeñas */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+  }
+
+  .site-nav__brand {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .site-nav__links {
+    width: 100%;
+  }
+
+  .search-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-toolbar__input,
+  .search-toolbar__select {
+    width: 100%;
+  }
+}
+
+/* Móviles */
+@media (max-width: 480px) {
+  .book-grid,
+  .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .detail-card__title {
+    font-size: 1.4rem;
+  }
+
+  .ui-button,
+  .ui-link-button {
+    width: 100%;
+    text-align: center;
+  }
+
+  .detail-card__footer {
+    flex-direction: column;
+  }
+
+  .search-toolbar,
+  .filter-panel {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

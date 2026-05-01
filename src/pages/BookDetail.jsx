@@ -23,7 +23,9 @@ const BookDetail = ({ book: initialBook }) => {
     setIsFav(!isFav);
   };
 
-  if (!book) return <div className="state-message state-message--loading">Cargando...</div>;
+  if (!book) {
+    return <div className="state-message state-message--loading">Cargando información del libro...</div>;
+  }
 
   const description = book.description
     ? typeof book.description === 'string'
@@ -31,37 +33,103 @@ const BookDetail = ({ book: initialBook }) => {
       : book.description.value
     : 'No disponible';
 
+  const subjects = book.subjects ? book.subjects.slice(0, 6).join(', ') : 'No disponible';
+
   return (
     <div className="app-page detail-page">
-      <button className="ui-button ui-button--ghost" onClick={() => router.back()}>← Volver</button>
 
-      <article className="detail-card">
-        <img
-          className="detail-card__cover"
-          src={openLibraryService.getCoverUrl(book.covers?.[0], 'L')}
-          alt={book.title}
-        />
+      {/* BOTÓN VOLVER */}
+      <button
+        className="ui-button ui-button--ghost"
+        onClick={() => router.back()}
+        style={{ marginBottom: '20px' }}
+      >
+        ← Volver
+      </button>
 
-        <div className="detail-card__body">
-          <div className="detail-card__section">
-            <h1 className="detail-card__title">{book.title}</h1>
-            <p className="detail-description">{description}</p>
+      {/* TARJETA PRINCIPAL */}
+      <article
+        className="detail-card"
+        style={{
+          display: 'flex',
+          gap: '30px',
+          padding: '30px',
+          borderRadius: '16px',
+          background: '#ffffff',
+          boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
+          flexWrap: 'wrap'
+        }}
+      >
+
+        {/* IMAGEN */}
+        <div style={{ flex: '0 0 250px', textAlign: 'center' }}>
+          <img
+            src={openLibraryService.getCoverUrl(book.covers?.[0], 'L')}
+            alt={book.title}
+            style={{
+              width: '100%',
+              maxWidth: '250px',
+              borderRadius: '10px',
+              boxShadow: '0 6px 15px rgba(0,0,0,0.1)'
+            }}
+          />
+        </div>
+
+        {/* CONTENIDO */}
+        <div style={{ flex: '1', minWidth: '250px' }}>
+
+          {/* TÍTULO */}
+          <h1 style={{ marginBottom: '10px', color: '#2c3e50' }}>
+            {book.title}
+          </h1>
+
+          {/* DESCRIPCIÓN */}
+          <p style={{ marginBottom: '20px', color: '#555', lineHeight: '1.6' }}>
+            {description}
+          </p>
+
+          {/* INFO */}
+          <div style={{ marginBottom: '20px' }}>
+            <p><strong>Fecha de publicación:</strong> {book.first_publish_date || 'N/D'}</p>
+            <p><strong>Temas:</strong> {subjects}</p>
           </div>
 
-          <div className="detail-card__info">
-            <p className="detail-meta"><span className="detail-card__label">Fecha publicación:</span> {book.first_publish_date || 'N/D'}</p>
-            <p className="detail-meta"><span className="detail-card__label">Temas:</span> {book.subjects ? book.subjects.slice(0, 5).join(', ') : 'N/D'}</p>
-          </div>
+          {/* BOTONES */}
+          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
 
-          <div className="detail-card__footer">
-            <button className={`ui-button ${isFav ? 'ui-button--danger' : 'ui-button--secondary'}`} onClick={toggleFavorite}>
+            <button
+              onClick={toggleFavorite}
+              style={{
+                background: isFav ? '#e74c3c' : '#3498db',
+                color: 'white',
+                border: 'none',
+                padding: '10px 20px',
+                borderRadius: '25px',
+                cursor: 'pointer',
+                fontWeight: 'bold'
+              }}
+            >
               {isFav ? 'Quitar de favoritos' : 'Agregar a favoritos'}
             </button>
 
-            <a className="ui-link-button ui-link-button--primary" href={`https://openlibrary.org${book.key}`} target="_blank" rel="noreferrer">
+            <a
+              href={`https://openlibrary.org${book.key}`}
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                background: '#2ecc71',
+                color: 'white',
+                padding: '10px 20px',
+                borderRadius: '25px',
+                textDecoration: 'none',
+                fontWeight: 'bold'
+              }}
+            >
               Ver en OpenLibrary
             </a>
+
           </div>
+
         </div>
       </article>
     </div>

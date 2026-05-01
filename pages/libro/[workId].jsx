@@ -3,27 +3,32 @@ import { openLibraryService } from '../../src/services/openLibraryService';
 
 export default function BookDetailPage({ book, error }) {
   if (error) {
-    return <div className="state-message state-message--error">Error al cargar el libro: {error}</div>;
+    return (
+      <div className="state-message state-message--error">
+        Error al cargar el libro: {error}
+      </div>
+    );
   }
-  
+
   return <BookDetail book={book} />;
 }
 
 export async function getServerSideProps({ params }) {
   try {
     const book = await openLibraryService.getBookDetails(params.workId);
+
     return {
-      props: { book },
-      revalidate: 3600, // Revalidate every hour
+      props: { book }
     };
+
   } catch (error) {
     console.error('Error fetching book details:', error);
+
     return {
-      props: { 
+      props: {
         book: null,
         error: 'No se pudo cargar el libro'
-      },
-      revalidate: 60,
+      }
     };
   }
 }
