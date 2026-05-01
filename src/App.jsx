@@ -1,28 +1,6 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Search from './pages/Search';
-import BookDetail from './pages/BookDetail';
-import Favorites from './pages/Favorites';
-import About from './pages/About';
-import './App.css';
+// This file is no longer used. Routing is handled by Next.js Pages Router.
+// Next.js entry point is pages/_app.jsx instead.
 
-function App() {
-  return (
-    <div className="app-container">
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/buscar" element={<Search />} />
-          <Route path="/libro/:workId" element={<BookDetail />} />
-          <Route path="/favoritos" element={<Favorites />} />
-          <Route path="/acerca" element={<About />} />
-        </Routes>
-      </main>
-    </div>
-  );
+export default function App() {
+  return null;
 }
-
-export default App;

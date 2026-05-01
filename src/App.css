@@ -458,3 +458,93 @@ main {
     padding: 0.9rem;
   }
 }
+
+/* About page specific styles moved here from src/pages/About.css */
+.about-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2f7, #f8f9fb);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.about-card {
+  background: white;
+  width: 100%;
+  max-width: 1000px;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+}
+
+.about-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.about-header h1 {
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.about-header p {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.about-box {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  transition: 0.3s;
+}
+
+.about-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.about-box h2 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.about-box p,
+.about-box li {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.5;
+}
+
+.about-box ul {
+  padding-left: 18px;
+}
+
+.about-footer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.about-footer a {
+  background: #3498db;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.about-footer a:hover {
+  background: #2980b9;
+}

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { storage } from '../utils/storage';
 import { openLibraryService } from '../services/openLibraryService';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 const Favorites = () => {
   const [favorites, setFavorites] = useState([]);
@@ -43,7 +43,7 @@ const Favorites = () => {
               </div>
 
               <div className="favorite-card__actions">
-                <Link className="ui-link-button ui-link-button--primary" to={`/libro/${workId}`}>
+                <Link className="ui-link-button ui-link-button--primary" href={`/libro/${workId}`}>
                   Ver detalle
                 </Link>
 

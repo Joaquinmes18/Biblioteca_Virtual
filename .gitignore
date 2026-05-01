@@ -1,3 +1,66 @@
+<<<<<<< HEAD
 .next/
 node_modules/
 dist/
+=======
+# Node
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Vite / other build outputs
+dist/
+build/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Environment files (local secrets)
+.env
+.env.local
+.env.*.local
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Testing / coverage
+coverage/
+
+# Cache
+.cache/
+.parcel-cache/
+
+# Misc
+*.tgz
+.envrc
+
+# Next export/static optimization
+.next/cache/
+
+# Ignore local system files
+Desktop.ini
+
+# Ignore any local secrets or credentials
+*.pem
+
+# Keep package-lock.json tracked (do not ignore)
+>>>>>>> d0055d611f2484b91c3049ad0c74187332cb20ea
